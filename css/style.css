@@ -1,0 +1,112 @@
+html {
+  background-image: radial-gradient(at center center, #ff7800 23%, #d83600 91%);
+}
+body {
+  display:grid;
+  grid-gap: 1em;
+  grid-template-rows: auto auto 1fr auto;
+  min-height: 100vh;
+  max-width: 40rem;
+  margin: 0 auto;
+}
+h1,
+h2 {
+  font-family: 'Creepster', cursive;
+}
+
+h1 {
+  font-size: 3.6rem;
+  text-align: center;
+}
+
+h2 {
+  font-size: 2.4rem;
+}
+/**
+ * A simple grid layout
+ */
+.row {
+  margin: auto auto;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  column-gap: 1rem;
+  row-gap: 1rem;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.grid {
+  min-height: 6em;
+  padding: 1em;
+  background: #fff;
+}
+
+.restart {
+  background-color: rgb(34,139,34);
+  border: 1px solid rgba(0,0,0,0.3);
+  border-radius: .25em;
+  color: #fff;
+  display: block;
+  font-size: 1.25rem;
+  margin: 2rem 0;
+  padding: 0.5em 0.75em;
+  width: 100%;
+}
+
+ul {
+  margin-bottom: 3rem;
+}
+
+ul li::marker {
+  color: #d83600;
+  content: '✔';
+  font-family: cursive;
+}
+
+ul li {
+  font-size: 1.6rem;
+  padding-left: 1rem;
+}
+
+button:focus {
+  outline-offset: 2px;
+  outline-style: solid;
+  outline-color: steelblue;
+  outline-width: .4em;
+}
+
+
+/**
+ * Make sure images scale
+ */
+img {
+  height: auto;
+  max-width: 100%;
+}
+
+button {
+  background: transparent;
+  border: 0;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+@media (min-width: 40rem) {
+  body {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr 10vh;
+  }
+  header {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+  main {
+    grid-column: span 2;
+  }
+  footer {
+    grid-column: span 2;
+    grid-row: span 1;
+  }
+}

@@ -2,139 +2,27 @@
 <html>
 <head>
 	<title>Monsters!</title>
-
-	<style type="text/css">
-		body {
-			margin: 1em auto;
-			max-width: 40em;
-			width: 88%;
-		}
-
-		/**
-		 * A simple grid layout
-		 */
-		.row {
-			display: grid;
-			grid-template-columns: auto auto auto;
-			column-gap: 1rem;
-			row-gap: 1rem;
-			text-align: center;
-		}
-
-		.grid {
-			min-height: 6em;
-			padding: 1em;
-		}
-		.grid:focus {
-			outline: 1rem;
-		}
-		/**
-		 * Make sure images scale
-		 */
-		img {
-			height: auto;
-			max-width: 100%;
-		}
-
-
-	</style>
+	<link href="https://fonts.googleapis.com/css?family=Creepster&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
-	<h1>Monsters!</h1>
-
+<header>
+	<h1>Monsters In My Closet</h1>
+</header>
+<main>
+	<h2>How To Play</h2>
+	<ul>
+		<li>Click on the closet doors to find all of the monsters! 👹.</li>
+		<li>Avoid the sock 🧦</li>
+	</ul>
 	<div id="app" class="row"></div>
-
+	<button id="restart" class="restart">Restart Game</button>
+</main>
 	<footer>
 		<hr>
 		<p class="text-small text-muted">Icons by <a href="https://thenounproject.com/term/door/311732/">Jamie Dickinson</a>, <a href="https://thenounproject.com/term/monster/184225/">Nicky Knicky</a>, <a href="https://thenounproject.com/term/monster/1510400/">Alvaro Cabrera</a>, <a href="https://thenounproject.com/term/monster/28460/">Eliricon</a>, <a href="https://thenounproject.com/term/monster/82823/">April Yang</a>, <a href="https://thenounproject.com/term/monster/1062009/">tk66</a>, <a href="https://thenounproject.com/term/monster/24990/">Alex WaZa</a>, <a href="https://thenounproject.com/term/monster/37212/">Husein Aziz</a>, <a href="https://thenounproject.com/term/monster/2236082">iconcheese</a>, and <a href="https://thenounproject.com/term/socks/38451/">Yazmin Alanis</a>.</p>
 	</footer>
 
-	<script>
-		// The monsters and socks
-		var monsters = [
-			'monster1',
-			'monster2',
-			'monster3',
-			'monster4',
-			'monster5',
-			'monster6',
-			'monster7',
-			'monster8',
-			'monster9',
-			'monster10',
-			'monster11',
-			'sock'
-		];
-
-		// Your code goes here...
-		const app = document.querySelector('#app');
-
-		/**
-		* Randomly shuffle an array
-		* https://stackoverflow.com/a/2450976/1293256
-		* @param  {Array} array The array to shuffle
-		* @return {String}      The first item in the shuffled array
-		*/
-
-		const shuffle = function (array) {
-
-			let currentIndex = array.length;
-			let temporaryValue, randomIndex;
-
-			// While there remain elements to shuffle...
-			while (0 !== currentIndex) {
-				// Pick a remaining element...
-				randomIndex = Math.floor(Math.random() * currentIndex);
-				currentIndex -= 1;
-
-				// And swap it with the current element.
-				temporaryValue = array[currentIndex];
-				array[currentIndex] = array[randomIndex];
-				array[randomIndex] = temporaryValue;
-			}
-
-			return array;
-		};
-
-		const monsterSquare = function(monster) {
-			return `<button class="grid">
-								<img src="img/door.svg" alt="${ monster }" data-monster="${ monster }">
-							</button>`;
-		};
-
-		const buildMonsterGrid = function(monsters) {
-
-			const monsterGrid = monsters.map(monsterSquare);
-
-			monsterGrid.unshift('<div class="row">');
-			monsterGrid.push('</div>');
-
-			return monsterGrid;
-		};
-
-		const findMonster = function(target) {
-			if ( target.closest('[data-monster]') ) {
-				return target;
-			} else {
-				return target.firstElementChild;
-			}
-
-		};
-
-		const swapImage = function(element) {
-			const monster = element.getAttribute('data-monster');
-			element.setAttribute('src', `img/${ monster }.svg`);
-		};
-
-		shuffle(monsters);
-		app.innerHTML = buildMonsterGrid(monsters).join('');
-
-		app.addEventListener('click', function(event) {
-			const monster = findMonster(event.target);
-			swapImage(monster);
-		}, false);
-
-	</script>
+	<script defer src="js/app.js"></script>
 </body>
 </html>
